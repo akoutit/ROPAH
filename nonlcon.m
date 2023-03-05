@@ -4,7 +4,9 @@ l1=x(1);
 l2=x(2);
 a=x(3);
 b=x(4);
-
+mcondA=10;
+mcondB=10;
+e=1e-10;
 yc=0;
 zc=0;
 l=1;
@@ -14,16 +16,15 @@ l=1;
     P(4)=pi/2;
     
      [B,err] = Jacob_B(P,b,a,l1,l2);
-     A = Jacob_A(P,b,a,l1,l2);
+      A = Jacob_A(P,b,a,l1,l2);
     Ceq(l)=err;
     if err==0
-        C(2*l)=-1/cond(B)+0.1;
-        C(2*l-1)=cond(A)/cond(B)+0.1;
-    else
-        C(2*l)=-1;
-        C(2*l-1)=-1;
+        
+       C(2*l-1)=-1/cond(B)+1/mcondB;
+       C(2*l)=-abs(det(A))+e;
     end
     l=l+1;
+
 %%
 %up
 for k=0:25
@@ -33,14 +34,13 @@ for k=0:25
     P(4)=0;
     
      [B,err] = Jacob_B(P,b,a,l1,l2);
-     A = Jacob_A(P,b,a,l1,l2);
+      A = Jacob_A(P,b,a,l1,l2);
     Ceq(l)=err;
     if err==0
-        C(2*l)=-1/cond(B)+0.1;
-        C(2*l-1)=cond(A)/cond(B)+0.1;
-    else
-        C(2*l)=-1;
-        C(2*l-1)=-1;
+        
+       C(2*l-1)=-1/cond(B)+1/mcondB;
+       C(2*l)=-abs(det(A))+e;
+
     end
     l=l+1;
 end
@@ -53,14 +53,12 @@ for theta=0:pi/100:pi/2
     P(4)=theta;
     
      [B,err] = Jacob_B(P,b,a,l1,l2);
-     A = Jacob_A(P,b,a,l1,l2);
+      A = Jacob_A(P,b,a,l1,l2);
     Ceq(l)=err;
     if err==0
-        C(2*l)=-1/cond(B)+0.1;
-        C(2*l-1)=cond(A)/cond(B)+0.1;
-    else
-        C(2*l)=-1;
-        C(2*l-1)=-1;
+
+       C(2*l-1)=-1/cond(B)+1/mcondB;
+       C(2*l)=-abs(det(A))+e;
     end
     l=l+1;
 end
@@ -73,17 +71,15 @@ for j=0:300
     P(4)=0;
     
      [B,err] = Jacob_B(P,b,a,l1,l2);
-     A = Jacob_A(P,b,a,l1,l2);
+      A = Jacob_A(P,b,a,l1,l2);
     Ceq(l)=err;
     if err==0
-        C(2*l)=-1/cond(B)+0.1;
-        C(2*l-1)=cond(A)/cond(B)+0.1;
-    else
-        C(2*l)=-1;
-        C(2*l-1)=-1;
+        
+       C(2*l-1)=-1/cond(B)+1/mcondB;
+       C(2*l)=-abs(det(A))+e;
+
     end
     l=l+1;
-end
 %%
 %Rotation
 for theta=0:pi/100:pi/2
@@ -93,14 +89,12 @@ for theta=0:pi/100:pi/2
     P(4)=theta;
     
      [B,err] = Jacob_B(P,b,a,l1,l2);
-     A = Jacob_A(P,b,a,l1,l2);
+      A = Jacob_A(P,b,a,l1,l2);
     Ceq(l)=err;
     if err==0
-        C(2*l)=-1/cond(B)+0.1;
-        C(2*l-1)=cond(A)/cond(B)+0.1;
-    else
-        C(2*l)=-1;
-        C(2*l-1)=-1;
+
+       C(2*l-1)=-1/cond(B)+1/mcondB;
+       C(2*l)=-abs(det(A))+e;
     end
     l=l+1;
 end
@@ -116,15 +110,14 @@ for k=0:25
      A = Jacob_A(P,b,a,l1,l2);
     Ceq(l)=err;
     if err==0
-        C(2*l)=-1/cond(B)+0.1;
-        C(2*l-1)=cond(A)/cond(B)+0.1;
-    else
-        C(2*l)=-1;
-        C(2*l-1)=-1;
+
+       C(2*l-1)=-1/cond(B)+1/mcondB;
+       C(2*l)=-abs(det(A))+e;
+
     end
     l=l+1;
 end
 %%
-C=[];
+
 end
 
