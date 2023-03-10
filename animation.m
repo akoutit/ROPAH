@@ -2,8 +2,9 @@ close all
 %v = VideoWriter('animation.avi');
 %open(v);
 set(gcf, 'Position',get(0,'Screensize'));
-axis([-150 150 -150 150 0 30]);
+axis([-300 300 -300 300 0 30]);
 x=[224.9162  218.9266  249.9524  331.1366];
+
 l1=x(1);
 l2=x(2);
 a=x(3);
